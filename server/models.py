@@ -54,7 +54,7 @@ class Review(db.Model, SerializerMixin):
     __tablename__ = "reviews"
 
     id = db.Column(db.Integer, primary_key=True)
-    rating = db.Column(db.Integer(1), nullable=False)
+    rating = db.Column(db.Integer(), nullable=False)
     comment = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
@@ -103,7 +103,7 @@ class Game(db.Model, SerializerMixin):
 ##############################################################################################
 ##############################################################################################
 
-class Publisher_Game(db.Modal, SerializerMixin):
+class Publisher_Game(db.Model, SerializerMixin):
 
     __tablename__ = "publisher_games"
 

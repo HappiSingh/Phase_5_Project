@@ -1,5 +1,5 @@
 from faker import Faker
-from models import User
+from models import User, Game, Review, Publisher, Publisher_Game
 from random import randint, choice as rc
 from config import db, app, bcrypt
 #import ipdb; ipdb.set_trace()
@@ -7,11 +7,18 @@ faker = Faker()
 
 with app.app_context():
 
-    print("Deleting User info...")
+    print("Deleting Current DB data...\n")
 
     User.query.delete()
+    Review.query.delete()
+    Game.query.delete()
+    Publisher.query.delete()
+    Publisher_Game.query.delete()
 
-    print("Starting seed...")
+    print("Deletion of DB data completed\n")
+
+
+    print("Starting seed...\n")
         # Seed code goes here!
 
     first_name = faker.first_name()
@@ -27,8 +34,11 @@ with app.app_context():
     # We are calling the password_hash setter method here
     user.password_hash = password
     
-    print("Adding to db and commiting...")
+    print("Adding to db and commiting...\n")
+
     db.session.add(user)
     db.session.commit()
 
-    print("Seeding completed")
+    print("Add/Commit completed\n")
+
+    print("Seeding completed\n")
