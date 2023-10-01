@@ -8,6 +8,8 @@ class User(db.Model, SerializerMixin):
 
     __tablename__ = "users"
 
+    serialize_rules = ("-reviews.user",)
+
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(25), nullable=False)
     last_name = db.Column(db.String(25), nullable=False)
@@ -15,6 +17,8 @@ class User(db.Model, SerializerMixin):
     email = db.Column(db.String(100), unique=True, nullable=False)
     _password_hash = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.now())
+
+    reviews = db.relationship("Review", backref="user")
 
     # Restrict access to the password hash.
     @hybrid_property
@@ -55,6 +59,9 @@ class Review(db.Model, SerializerMixin):
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    game_id = db.Column(db.Integer, db.ForeignKey("games.id"))
+
 
     def __repr__(self):
         return f"Review ID: {self.id} \
@@ -72,11 +79,16 @@ class Game(db.Model, SerializerMixin):
 
     __tablename__ = "games"
 
+    serialize_rules = ("-reviews.game", "-publisher_games.game",)
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
     release_date = db.Column(db.Date, nullable=False)
     genre = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.now())
+
+    reviews = db.relationship("Review", backref="game")
+    publisher_games = db.relationship("Publisher_Game", backref="game")
 
 
     def __repr__(self):
@@ -99,6 +111,9 @@ class Publisher_Game(db.Modal, SerializerMixin):
     count = db.Column(db.Integer)
     list_of_games = db.Column(db.String)
 
+    game_id = db.Column(db.Integer, db.ForeignKey("games.id"))
+    publisher_id = db.Column(db.Integer, db.ForeignKey("publishers.id"))
+
     
     def __repr__(self):
         return f"Publisher_Game ID: {self.id} \
@@ -114,10 +129,14 @@ class Publisher(db.Model, SerializerMixin):
 
     __tablename__ = "publishers"
 
+    serialize_rules = ("-publisher_games.publisher",)
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     country = db.Column(db.String(50), nullable=False)
     year_founded = db.Column(db.Integer, nullable=False)
+
+    publisher_games = db.relationship("Publisher_Game", backref="publisher")
 
 
     def __repr__(self):
