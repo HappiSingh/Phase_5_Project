@@ -7,15 +7,17 @@ faker = Faker()
 
 with app.app_context():
 
+    print("Deleting User info...")
+
     User.query.delete()
 
     print("Starting seed...")
         # Seed code goes here!
 
-    first_name = faker.name.firstName()
-    last_name = faker.name.lastName()
-    email = faker.internet.email()
-    password = 123456
+    first_name = faker.first_name()
+    last_name = faker.last_name()
+    email = faker.email()
+    password = "123456"
 
     user = User(
             first_name=first_name,
@@ -24,5 +26,9 @@ with app.app_context():
                             )
     # We are calling the password_hash setter method here
     user.password_hash = password
+    
+    print("Adding to db and commiting...")
     db.session.add(user)
     db.session.commit()
+
+    print("Seeding completed")
