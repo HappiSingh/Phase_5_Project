@@ -9,8 +9,11 @@ class User(db.Model, SerializerMixin):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String, unique=True)
-    _password_hash = db.Column(db.String)
+    first_name = db.Column(db.String(25), nullable=False)
+    last_name = db.Column(db.String(25), nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    _password_hash = db.Column(db.String, nullable=False)
+    created_at = db.Column(db.DateTime, default=db.func.now())
 
 
 
@@ -28,4 +31,8 @@ class User(db.Model, SerializerMixin):
         return bcrypt.check_password_hash(self._password_hash, password)
 
     def __repr__(self):
-        return f"User {self.username}, ID: {self.id}"
+        return f"User ID: {self.id} \
+                 First Name: {self.first_name} \
+                 Last Name: {self.last_name} \
+                 Email: {self.email} \
+                 Created at: {self.id}"
