@@ -21,15 +21,15 @@ with app.app_context():
     print("Starting seed...\n")
         # Seed code goes here!
 
-    first_name = faker.first_name()
-    last_name = faker.last_name()
-    email = faker.email()
+    # first_name = faker.first_name()
+    # last_name = faker.last_name()
+    # email = faker.email()
     password = "123456"
 
     user = User(
-            first_name=first_name,
-            last_name=last_name,
-            email=email
+            first_name=faker.first_name(),
+            last_name=faker.last_name(),
+            email=faker.email()
                             )
     # We are calling the password_hash setter method here
     user.password_hash = password
