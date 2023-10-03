@@ -1,8 +1,8 @@
-"""Added Serializations and Relationships
+"""Creating tables
 
-Revision ID: d96fdefbacda
+Revision ID: b7eb4fca992e
 Revises: 
-Create Date: 2023-10-01 04:54:04.695105
+Create Date: 2023-10-02 21:49:54.148425
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'd96fdefbacda'
+revision = 'b7eb4fca992e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -47,7 +47,6 @@ def upgrade():
     op.create_table('publisher_games',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('count', sa.Integer(), nullable=True),
-    sa.Column('list_of_games', sa.String(), nullable=True),
     sa.Column('game_id', sa.Integer(), nullable=True),
     sa.Column('publisher_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['game_id'], ['games.id'], ),

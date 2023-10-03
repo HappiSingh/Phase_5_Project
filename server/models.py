@@ -109,7 +109,7 @@ class Publisher_Game(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     count = db.Column(db.Integer)
-    list_of_games = db.Column(db.String)
+
 
     game_id = db.Column(db.Integer, db.ForeignKey("games.id"))
     publisher_id = db.Column(db.Integer, db.ForeignKey("publishers.id"))
@@ -117,8 +117,7 @@ class Publisher_Game(db.Model, SerializerMixin):
     
     def __repr__(self):
         return f"Publisher_Game ID: {self.id} \
-                 count: {self.count} \
-                 list_of_games: {self.list_of_games}"
+                 count: {self.count}"
 
 
 ##############################################################################################

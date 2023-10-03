@@ -3,7 +3,7 @@ from models import User, Game, Review, Publisher, Publisher_Game
 from datetime import date
 from random import randint, choice as rc
 from config import db, app, bcrypt
-#import ipdb; ipdb.set_trace()
+
 faker = Faker()
 
 with app.app_context():
@@ -105,5 +105,41 @@ with app.app_context():
     db.session.commit()
 
     print("Reviews completed\n")
+
+    pub_1 = Publisher(
+        name="Ubisoft",
+        country="France",
+        year_founded = "1986"
+        )
+
+    pub_2 = Publisher(
+        name="Electronic Arts",
+        country="California",
+        year_founded = "1982"
+        )
+
+    db.session.add_all([pub_1, pub_2])
+    db.session.commit()
+
+
+    print("Publisher completed\n")
+
+    pub_game_1 = Publisher_Game(
+        count=1,
+        game_id=1,
+        publisher_id=1
+        )
+
+    pub_game_2 = Publisher_Game(
+        count=1,
+        game_id=2,
+        publisher_id=2
+        )
+
+    db.session.add_all([pub_game_1, pub_game_2])
+    db.session.commit()
+
+    print("Publisher_Games completed\n")
+    # import ipdb; ipdb.set_trace()
 
     print("Seeding completed\n")
