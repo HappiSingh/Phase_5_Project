@@ -8,7 +8,7 @@ class User(db.Model, SerializerMixin):
 
     __tablename__ = "users"
 
-    serialize_rules = ("-reviews.user", "-_password_hash")
+    serialize_only = ("id", "first_name", "last_name", "age", "email")
 
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(25), nullable=False)
@@ -81,7 +81,7 @@ class Game(db.Model, SerializerMixin):
 
     __tablename__ = "games"
 
-    serialize_rules = ("-reviews.game", "-publisher_games.game",)
+    serialize_only = ("id", "title", "release_date", "genre")
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
@@ -132,7 +132,7 @@ class Publisher(db.Model, SerializerMixin):
 
     __tablename__ = "publishers"
 
-    serialize_rules = ("-publisher_games.publisher",)
+    serialize_only = ("id", "name", "country", "year_founded")
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
