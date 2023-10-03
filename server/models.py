@@ -2,13 +2,15 @@
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy_serializer import SerializerMixin
 
+
+
 from config import db, bcrypt
 
 class User(db.Model, SerializerMixin):
 
     __tablename__ = "users"
 
-    serialize_only = ("id", "first_name", "last_name", "age", "email")
+    serialize_only = ("id", "first_name", "last_name", "age", "email",)
 
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(25), nullable=False)
@@ -81,7 +83,7 @@ class Game(db.Model, SerializerMixin):
 
     __tablename__ = "games"
 
-    serialize_only = ("id", "title", "release_date", "genre")
+    serialize_only = ("id", "title", "release_date", "genre",)
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
@@ -132,7 +134,7 @@ class Publisher(db.Model, SerializerMixin):
 
     __tablename__ = "publishers"
 
-    serialize_only = ("id", "name", "country", "year_founded")
+    serialize_only = ("id", "name", "country", "year_founded",)
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)

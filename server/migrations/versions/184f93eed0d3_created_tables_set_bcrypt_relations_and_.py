@@ -1,8 +1,8 @@
-"""Trying out serialize only
+"""Created tables, set bcrypt, relations, and serialization
 
-Revision ID: db48cf3e61f7
+Revision ID: 184f93eed0d3
 Revises: 
-Create Date: 2023-10-03 04:03:13.691665
+Create Date: 2023-10-03 06:38:17.969221
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'db48cf3e61f7'
+revision = '184f93eed0d3'
 down_revision = None
 branch_labels = None
 depends_on = None
