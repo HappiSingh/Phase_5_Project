@@ -37,8 +37,34 @@ api.add_resource(Publishers, '/publishers')
 
 #################################################################################
 
+class SignUp(Resource):
+	def post(self):
 
+            first_name = request.get_json("first_name")
+            last_name = request.get_json("last_name")
+            age = request.get_json("age")
+            email = request.get_json("email")
+            password = request.get_json("password")
 
+            if first_name and last_name and age and email and password:
+
+                new_user = User(
+                    first_name=first_name,
+                    last_name=last_name,
+                    age=age,
+                    email=email
+                    )
+                new_user.password_hash=password
+
+                db.session.add(new_user)
+                db.session.commit()
+
+                session['user_id']= new_user.id
+                return new_user.to_dict(), 201
+
+            return {'error': '422 Unprocessable Entity'}, 422
+
+api.add_resource(SignUp, '/signup')
 
 
 
