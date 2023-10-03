@@ -8,7 +8,7 @@ class User(db.Model, SerializerMixin):
 
     __tablename__ = "users"
 
-    serialize_rules = ("-reviews.user",)
+    serialize_rules = ("-reviews.user", "-_password_hash")
 
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(25), nullable=False)
@@ -36,12 +36,12 @@ class User(db.Model, SerializerMixin):
         return bcrypt.check_password_hash(self._password_hash, password)
 
     def __repr__(self):
-        return f"User ID: {self.id} \
+        return (f"User ID: {self.id} \
                  First Name: {self.first_name} \
                  Last Name: {self.last_name} \
                  Age: {self.age} \
                  Email: {self.email} \
-                 Created at: {self.created_at}"
+                 Created at: {self.created_at}")
     
 
 
@@ -64,11 +64,13 @@ class Review(db.Model, SerializerMixin):
 
 
     def __repr__(self):
-        return f"Review ID: {self.id} \
+        return (f"Review ID: {self.id} \
                  Rating: {self.rating} \
                  Comment: {self.comment} \
                  Created at: {self.created_at} \
-                 Updated at: {self.updated_at}"
+                 Updated at: {self.updated_at} \
+                 User ID: {self.user_id} \
+                 Game ID: {self.game_id}")
 
 
 ##############################################################################################
@@ -92,11 +94,11 @@ class Game(db.Model, SerializerMixin):
 
 
     def __repr__(self):
-        return f"Game ID: {self.id} \
+        return (f"Game ID: {self.id} \
                  Title: {self.title} \
                  Release Date: {self.release_date} \
                  Genre: {self.genre} \
-                 Created at: {self.created_at}"
+                 Created at: {self.created_at}")
 
 
 ##############################################################################################
@@ -116,8 +118,10 @@ class Publisher_Game(db.Model, SerializerMixin):
 
     
     def __repr__(self):
-        return f"Publisher_Game ID: {self.id} \
-                 count: {self.count}"
+        return (f"Publisher_Game ID: {self.id} \
+                 count: {self.count} \
+                 Game ID: {self.game_id} \
+                 Publisher ID: {self.publisher_id}")
 
 
 ##############################################################################################
@@ -139,7 +143,7 @@ class Publisher(db.Model, SerializerMixin):
 
 
     def __repr__(self):
-        return f"Publisher ID: {self.id} \
+        return (f"Publisher ID: {self.id} \
                  Name: {self.name} \
                  Country: {self.country} \
-                 Year Founded: {self.year_founded}"
+                 Year Founded: {self.year_founded}")
