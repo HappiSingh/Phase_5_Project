@@ -1,6 +1,6 @@
 # app.py
 from sqlite3 import IntegrityError
-from flask import request, session
+from flask import make_response, request, session
 from flask_restful import Resource
 # import ipdb; ipdb.set_trace()
 
@@ -70,20 +70,48 @@ class Login(Resource):
 	def post(self):
 
             data = request.get_json()
-            password = data.get('password')
-            email = data.get('email')
+            password = data["password"]
+            email = data["email"]
 
             user = User.query.filter(User.email == email).first()
+            
             if user:
                 if user.authenticate(password):
-					
+
                     session["user_id"] = user.id
                     return user.to_dict(), 200
-            return {"errors" : "Unauthorized"}, 401
+            else:
+                return {"errors" : "Unauthorized"}, 401
 
 
 
 api.add_resource(Login, '/login')
+
+###################################################################################
+
+class CheckSession(Resource):
+    def get(self):
+            user = User.query.filter(User.id == session.get('user_id')).first()
+            if user:
+                response = make_response(
+                    user.to_dict(),
+                    200,
+                )
+                return response
+            else:
+                return {"errors": "Unauthorized"}, 401
+
+api.add_resource(CheckSession, '/check_session')
+
+
+###################################################################################
+
+class Logout(Resource):
+      def delete(self):
+            if session.get("user_id"):
+                  session["user_id"] = None
+                  return {}, 204
+            return {'errors': 'Unauthorized'}, 401
 
 
 
