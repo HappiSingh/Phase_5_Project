@@ -37,6 +37,52 @@ class Publishers(Resource):
 		return publishers, 200
 api.add_resource(Publishers, '/publishers')
 
+# RESTful route syntax
+class Reviews(Resource):
+	def get(self):
+		reviews = [review.to_dict() for review in Review.query.all()]
+		return reviews, 200
+api.add_resource(Reviews, '/reviews')
+
+# RESTful route syntax
+class ReviewByUserID(Resource):
+	def get(self, id):
+
+            reviews = Review.query.filter(Review.user_id == id).all()
+            results = [result.to_dict() for result in reviews]
+            return results, 200
+
+api.add_resource(ReviewByUserID, '/review/user/<int:id>')
+
+
+class ReviewByID(Resource):
+    def get(self, id):
+            review = Review.query.filter(Review.id == id).first()
+            return review.to_dict(), 200
+
+
+    def patch(self, id):
+            review = Review.query.filter(Review.id == id).first()
+
+            for attr in request.get_json():
+                  setattr (review, attr, request.get_json[attr])
+
+            review.rating = int(request.get_json["rating"])
+            review.comment = str(request.get_json["comment"])
+
+            try:
+                db.session.add(review)
+                db.session.commit()
+
+                return review.to_dict(), 200
+            except:
+                return {}, 422
+
+
+api.add_resource(ReviewByID, '/review/<int:id>')
+
+
+
 #################################################################################
 
 class SignUp(Resource):
@@ -74,7 +120,7 @@ class Login(Resource):
             email = data["email"]
 
             user = User.query.filter(User.email == email).first()
-            
+
             if user:
                 if user.authenticate(password):
 
@@ -113,7 +159,7 @@ class Logout(Resource):
                   return {}, 204
             return {'errors': 'Unauthorized'}, 401
 
-
+api.add_resource(Logout, '/logout')
 
 
 
