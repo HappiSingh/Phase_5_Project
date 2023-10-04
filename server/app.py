@@ -64,11 +64,11 @@ class ReviewByID(Resource):
     def patch(self, id):
             review = Review.query.filter(Review.id == id).first()
 
-            for attr in request.get_json():
-                  setattr (review, attr, request.get_json[attr])
+            for attr in request.json:
+                  setattr (review, attr, request.json[attr])
 
-            review.rating = int(request.get_json["rating"])
-            review.comment = str(request.get_json["comment"])
+            review.rating = int(request.json["rating"])
+            review.comment = str(request.json["comment"])
 
             try:
                 db.session.add(review)
@@ -77,6 +77,13 @@ class ReviewByID(Resource):
                 return review.to_dict(), 200
             except:
                 return {}, 422
+
+    def delete(self, id):
+            review = Review.query.filter(Review.id == id).first()
+            db.session.delete(review)
+            db.session.commit()
+
+            return {}, 204
 
 
 api.add_resource(ReviewByID, '/review/<int:id>')
