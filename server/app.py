@@ -112,7 +112,7 @@ class SignUp(Resource):
                 session['user_id']= new_user.id
                 return new_user.to_dict(), 201
             except IntegrityError:
-                return {'error': '422 Unprocessable Entity'}, 422
+                return {'error': ['422 Unprocessable Entity']}, 422
 
 api.add_resource(SignUp, '/signup')
 
@@ -134,7 +134,7 @@ class Login(Resource):
                     session["user_id"] = user.id
                     return user.to_dict(), 200
             else:
-                return {"errors" : "Unauthorized"}, 401
+                return {"errors" : ["401 Unauthorized: Please check the email and password"]}, 401
 
 
 
@@ -152,7 +152,7 @@ class CheckSession(Resource):
                 )
                 return response
             else:
-                return {"errors": "Unauthorized"}, 401
+                return {"errors": ["Unauthorized"]}, 401
 
 api.add_resource(CheckSession, '/check_session')
 
@@ -164,7 +164,7 @@ class Logout(Resource):
             if session.get("user_id"):
                   session["user_id"] = None
                   return {}, 204
-            return {'errors': 'Unauthorized'}, 401
+            return {'errors': ['Unauthorized']}, 401
 
 api.add_resource(Logout, '/logout')
 
