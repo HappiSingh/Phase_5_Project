@@ -1,16 +1,48 @@
 
-import React from 'react';
+import {React,  useState }from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import './signup.css';
+import './login.css';
+import { useNavigate } from 'react-router-dom';
+
+function Login({user, setUser, games}) {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState([]);
+
+    const navigate = useNavigate(); 
+
+    function handleSubmit(email, password) {
+        
+        // e.preventDefault();
+        console.log(email, password)
+        
+        fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password}),
+        }).then((r) => {
+            if (r.ok) {
+            setEmail(email)
+            setPassword(password)
+            r.json().then((user) => setUser(user));
+            navigate('/')
+        } else {
+            r.json().then((err) => setErrors(err.errors));
+            // console.log([errors])
+            // navigate('/signup')
+        }
+        });
+    }
 
 
-function Login() {
-  
     return (
      <>
-     <h1>Login</h1>
-      <Formik
+     <h1 className='header'>Login</h1>
+     <Formik
         initialValues={{
             email: '',
             password: '',
@@ -24,25 +56,49 @@ function Login() {
             .required('Required'),
         })}
         onSubmit={(values) => {
-          console.log(values);
+        
+        
+        handleSubmit(values.email, values.password)
         }}
       >
         <Form className='login-form'>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <Field type="email" name="email" />
-            <ErrorMessage name="email" component="div" className="error-message"/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <Field type="password" name="password" />
-            <ErrorMessage name="password" component="div" className="error-message"/>
-          </div>
-          <button type="submit" className="submit-button">Submit</button>
+                
+        <div className="form-group">
+                    
+        <label htmlFor="email">Email</label>
+                    
+        <Field type="email" name="email" />
+                    
+        <ErrorMessage name="email" component="div" className="error-message"/>
+                
+        </div>
+                
+
+        <div className="form-group">
+                    
+        <label htmlFor="password">Password</label>
+                    
+        <Field type="password" name="password" />
+                    
+        <ErrorMessage name="password" component="div" className="error-message"/>
+                
+        </div>
+                
+        <button type="submit" className="submit-button">Submit</button>
+
+        
+        <div className="error-message">
+        <p>{errors}</p>
+        
+        </div>
+
         </Form>
-      </Formik>
+     
+        </Formik>
      </>
-    );
-  }
+  );
+}
+          export default Login;
+
+      
   
-  export default Login;

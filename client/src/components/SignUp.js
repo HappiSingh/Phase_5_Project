@@ -8,7 +8,7 @@ function SignUp() {
   
     return (
      <>
-     <h1>SignUp</h1>
+     <h1 className='header'>SignUp</h1>
       <Formik
         initialValues={{
             first_name: '',
