@@ -29,7 +29,8 @@ function NavBar({ user, onLogout }) {
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/games">Games</Nav.Link>
-              <Nav.Link href="/review/game/:id">Review for Game</Nav.Link>
+              <Nav.Link href={`/review/user/${user.id}`}>My Reviews</Nav.Link>
+              {/* <Nav.Link href="/review/game/:id">Review for Game</Nav.Link> */}
               <Button
                 variant="outline-danger"
                 className="button"

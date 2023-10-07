@@ -2,15 +2,9 @@ import "./gamecard.css";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
-function GameCard({ user, game, setGameID }) {
-  let { id, title, release_date, genre } = game;
+function MyReviewCard({ review, user }) {
   const navigate = useNavigate();
-
-  // function handleClick() {
-  //   setGameID(id);
-  //   navigate(`/review/game/${id}`);
-  // }
-
+  console.log(review);
   if (!user) {
     navigate("/login");
   } else {
@@ -18,9 +12,9 @@ function GameCard({ user, game, setGameID }) {
       <>
         <div className="card">
           <div className="card-body">
-            <h3 className="card-title">{title}</h3>
-            <p className="card-text">Release Date: {release_date}</p>
-            <p className="card-text">Genre: {genre}</p>
+            <h3 className="card-title">{review.game.title}</h3>
+            <p className="card-text">Rating: {review.rating} </p>
+            <p className="card-text">{review.comment}</p>
             <div className="d-grid gap-2">
               {/* <Button variant="primary" size="md" onClick={handleClick}>
                 Reviews
@@ -33,4 +27,4 @@ function GameCard({ user, game, setGameID }) {
   }
 }
 
-export default GameCard;
+export default MyReviewCard;

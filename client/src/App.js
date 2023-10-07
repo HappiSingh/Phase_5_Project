@@ -7,6 +7,7 @@ import SignUp from "./components/SignUp.js";
 import NavBar from "./components/NavBar.js";
 import Games from "./components/Games.js";
 import ReviewsByGame from "./components/ReviewsByGame";
+import MyReviews from "./components/MyReviews";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -86,10 +87,15 @@ function App() {
               exact
             />
             <Route
+              path="/review/user/:id"
+              element={<MyReviews user={user} />}
+              exact
+            />
+            {/* <Route
               path="/review/game/:id"
               element={<ReviewsByGame user={user} gameID={gameID} />}
               exact
-            />
+            /> */}
           </Routes>
         </main>
       </div>
