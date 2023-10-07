@@ -53,8 +53,17 @@ class ReviewByUserID(Resource):
             return results, 200
 
 api.add_resource(ReviewByUserID, '/review/user/<int:id>')
+######################################################################################
+class ReviewByGameID(Resource):
+	def get(self, id):
 
+            reviews = Review.query.filter(Review.game_id == id).all()
+            results = [result.to_dict() for result in reviews]
+            return results, 200
 
+api.add_resource(ReviewByGameID, '/review/game/<int:id>')
+
+########################################################################################
 class ReviewByID(Resource):
     def get(self, id):
             review = Review.query.filter(Review.id == id).first()

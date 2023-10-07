@@ -65,7 +65,7 @@ with app.app_context():
             month=10,
             day=25
         ),
-        genre = "First person shooter"
+        genre = "First Person Shooter"
         )
 
     db.session.add_all([game_1, game_2])
