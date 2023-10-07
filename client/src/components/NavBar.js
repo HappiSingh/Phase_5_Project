@@ -1,6 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
 import "./navbar.css";
 
 function NavBar({ user, onLogout }) {
@@ -27,9 +28,15 @@ function NavBar({ user, onLogout }) {
             <Navbar.Brand>Games_Review</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <button className="button" onClick={onLogout}>
+              <Nav.Link href="/games">Games</Nav.Link>
+              <Nav.Link href="/review/game/:id">Review for Game</Nav.Link>
+              <Button
+                variant="outline-danger"
+                className="button"
+                onClick={onLogout}
+              >
                 Logout
-              </button>
+              </Button>{" "}
             </Nav>
           </Container>
         </Navbar>
