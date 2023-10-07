@@ -49,8 +49,11 @@ class ReviewByUserID(Resource):
 	def get(self, id):
 
             reviews = Review.query.filter(Review.user_id == id).all()
-            results = [result.to_dict() for result in reviews]
-            return results, 200
+            if reviews:
+                results = [result.to_dict() for result in reviews]
+                return results, 200
+            else:
+                return {"errors" : ["No reviews by you"]}, 404
 
 api.add_resource(ReviewByUserID, '/review/user/<int:id>')
 ######################################################################################
