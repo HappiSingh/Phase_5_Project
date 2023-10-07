@@ -1,11 +1,10 @@
-
+import "./home.css";
 
 function Home() {
-  
   return (
-   <>
-   <h1 className="text"> Home </h1>
-   </>
+    <>
+      <h1 className="header"> Home </h1>
+    </>
   );
 }
 
