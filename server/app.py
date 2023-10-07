@@ -128,13 +128,12 @@ class Login(Resource):
 
             user = User.query.filter(User.email == email).first()
 
-            if user:
-                if user.authenticate(password):
+            if user and user.authenticate(password):
 
                     session["user_id"] = user.id
                     return user.to_dict(), 200
             else:
-                return {"errors" : ["401 Unauthorized: Please check the email and password"]}, 401
+                return {"errors" : ["401 Unauthorized: Please try again"]}, 401
 
 
 
