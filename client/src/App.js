@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar.js";
 import Games from "./components/Games.js";
 import AddReview from "./components/AddReview";
 import MyReviews from "./components/MyReviews";
+import Publishers from "./components/Publishers";
 import { useNavigate } from "react-router-dom";
 import UpdateReview from "./components/UpdateReview";
 
@@ -95,6 +96,11 @@ function App() {
             <Route
               path="/review/update/:id"
               element={<UpdateReview user={user} />}
+              exact
+            />
+            <Route
+              path="/publishers"
+              element={<Publishers user={user} />}
               exact
             />
           </Routes>

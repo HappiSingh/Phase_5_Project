@@ -22,15 +22,21 @@ api.add_resource(Users, '/users')
 # RESTful route syntax
 class Games(Resource):
 	def get(self):
-		games = [game.to_dict() for game in Game.query.all()]
-		return games, 200
+            games = [game.to_dict() for game in Game.query.all()]
+            if games:
+                return games, 200
+            else:
+               {'error': ['422 Unprocessable Entity']}, 422
 api.add_resource(Games, '/games')
 
 # RESTful route syntax
 class Publishers(Resource):
 	def get(self):
-		publishers = [publisher.to_dict() for publisher in Publisher.query.all()]
-		return publishers, 200
+            publishers = [publisher.to_dict() for publisher in Publisher.query.all()]
+            if publishers:
+                return publishers, 200
+            else:
+                {'error': ['422 Unprocessable Entity']}, 422
 api.add_resource(Publishers, '/publishers')
 
 # RESTful route syntax

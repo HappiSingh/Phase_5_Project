@@ -30,6 +30,7 @@ function NavBar({ user, onLogout }) {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/games">Games</Nav.Link>
               <Nav.Link href={`/review/user/${user.id}`}>My Reviews</Nav.Link>
+              <Nav.Link href="/publishers">Publishers</Nav.Link>
               <Button
                 variant="outline-danger"
                 className="button"
