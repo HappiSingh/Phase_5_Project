@@ -108,22 +108,22 @@ class ReviewByID(Resource):
                 return {"errors" : ["No review found"]}, 404
 
 
-    def patch(self, id):
-            review = Review.query.filter(Review.id == id).first()
+    # def patch(self, id):
+    #         review = Review.query.filter(Review.id == id).first()
 
-            for attr in request.json:
-                  setattr (review, attr, request.json[attr])
+    #         for attr in request.json:
+    #               setattr (review, attr, request.json[attr])
 
-            review.rating = int(request.json["rating"])
-            review.comment = str(request.json["comment"])
+    #         review.rating = int(request.json["rating"])
+    #         review.comment = str(request.json["comment"])
 
-            try:
-                db.session.add(review)
-                db.session.commit()
+    #         try:
+    #             db.session.add(review)
+    #             db.session.commit()
 
-                return review.to_dict(), 200
-            except:
-                return {}, 422
+    #             return review.to_dict(), 200
+    #         except:
+    #             return {}, 422
 
     def delete(self, id):
             review = Review.query.filter(Review.id == id).first()
@@ -140,6 +140,34 @@ api.add_resource(ReviewByID, '/review/<int:id>')
 
 
 
+#################################################################################
+class Update(Resource):
+
+    def get(self, id):
+            review = Review.query.filter(Review.id == id).first()
+            if review:
+                return review.to_dict(), 200
+            else:
+                return {"errors" : ["No review found"]}, 404
+
+    def patch(self, id):
+                review = Review.query.filter(Review.id == id).first()
+
+                for attr in request.json:
+                    setattr (review, attr, request.json[attr])
+
+                review.rating = int(request.json["rating"])
+                review.comment = str(request.json["comment"])
+
+                try:
+                    db.session.add(review)
+                    db.session.commit()
+
+                    return review.to_dict(), 200
+                except:
+                    return {'error': ['422 Unprocessable Entity']}, 422
+
+api.add_resource(Update, '/review/update/<int:id>')
 #################################################################################
 
 class SignUp(Resource):
