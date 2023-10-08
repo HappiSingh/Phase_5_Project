@@ -44,6 +44,19 @@ class Reviews(Resource):
 		return reviews, 200
 api.add_resource(Reviews, '/reviews')
 
+######################################################################################
+class ReviewByGameID(Resource):
+	def get(self, id):
+
+            reviews = Review.query.filter(Review.game_id == id).all()
+            results = [result.to_dict() for result in reviews]
+            return results, 200
+
+api.add_resource(ReviewByGameID, '/review/game/<int:id>')
+
+########################################################################################
+
+
 # RESTful route syntax
 class ReviewByUserID(Resource):
 	def get(self, id):
@@ -56,21 +69,15 @@ class ReviewByUserID(Resource):
                 return {"errors" : ["No reviews by you"]}, 404
 
 api.add_resource(ReviewByUserID, '/review/user/<int:id>')
-######################################################################################
-class ReviewByGameID(Resource):
-	def get(self, id):
 
-            reviews = Review.query.filter(Review.game_id == id).all()
-            results = [result.to_dict() for result in reviews]
-            return results, 200
-
-api.add_resource(ReviewByGameID, '/review/game/<int:id>')
-
-########################################################################################
+####################################################
 class ReviewByID(Resource):
     def get(self, id):
             review = Review.query.filter(Review.id == id).first()
-            return review.to_dict(), 200
+            if review:
+                return review.to_dict(), 200
+            else:
+                return {"errors" : ["No review found"]}, 404
 
 
     def patch(self, id):
