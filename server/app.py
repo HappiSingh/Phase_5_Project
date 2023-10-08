@@ -69,6 +69,34 @@ class ReviewByUserID(Resource):
                 return {"errors" : ["No reviews by you"]}, 404
 
 api.add_resource(ReviewByUserID, '/review/user/<int:id>')
+####################################################
+
+# Adding new review
+
+class AddReview(Resource):
+	def post(self):
+
+            data = request.get_json()
+
+            new_review = Review(
+                    rating=data["rating"],
+                    comment=data["comment"],
+                    user_id=data["id"],
+                    game_id=data["game_id"]
+                    )
+
+            try:
+                db.session.add(new_review)
+                db.session.commit()
+
+                return new_review.to_dict(), 201
+
+            except IntegrityError:
+                return {'error': ['422 Unprocessable Entity']}, 422
+
+
+api.add_resource(AddReview, '/review/new')
+
 
 ####################################################
 class ReviewByID(Resource):
@@ -99,10 +127,13 @@ class ReviewByID(Resource):
 
     def delete(self, id):
             review = Review.query.filter(Review.id == id).first()
-            db.session.delete(review)
-            db.session.commit()
+            try:
+                db.session.delete(review)
+                db.session.commit()
 
-            return {}, 204
+                return {}, 204
+            except:
+                  return {"errors" : ["Doesn't exist"]}, 404
 
 
 api.add_resource(ReviewByID, '/review/<int:id>')
