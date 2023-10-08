@@ -6,46 +6,23 @@ import Login from "./components/Login.js";
 import SignUp from "./components/SignUp.js";
 import NavBar from "./components/NavBar.js";
 import Games from "./components/Games.js";
-import ReviewsByGame from "./components/ReviewsByGame";
 import MyReviews from "./components/MyReviews";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
-  const [games, setGames] = useState([]);
-  const [gameID, setGameID] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/check_session")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Fetch failed");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setUser(data);
-      })
-      .catch((error) => {
-        setError(error.toString());
-      });
-  }, []);
-  // add user as dependency?
-
-  useEffect(() => {
-    fetch("/games")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Fetch failed");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setGames(data);
-      })
-      .catch((error) => {
-        setError(error.toString());
-      });
+    fetch("/check_session").then((response) => {
+      if (!response.ok) {
+        response.json().then((data) => setError(data["errors"]));
+      } else {
+        response.json().then((data) => setUser(data));
+      }
+    });
   }, []);
 
   function handleLogoutClick() {
@@ -54,6 +31,7 @@ function App() {
     }).then((r) => {
       if (r.ok) {
         setUser(null);
+        navigate("/login");
       }
     });
   }
@@ -79,23 +57,13 @@ function App() {
               element={<SignUp user={user} setUser={setUser} />}
               exact
             />
-            <Route
-              path="/games"
-              element={
-                <Games user={user} games={games} setGameID={setGameID} />
-              }
-              exact
-            />
+            <Route path="/games" element={<Games user={user} />} exact />
+
             <Route
               path="/review/user/:id"
               element={<MyReviews user={user} />}
               exact
             />
-            {/* <Route
-              path="/review/game/:id"
-              element={<ReviewsByGame user={user} gameID={gameID} />}
-              exact
-            /> */}
           </Routes>
         </main>
       </div>

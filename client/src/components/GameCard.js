@@ -2,7 +2,7 @@ import "./gamecard.css";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
-function GameCard({ user, game, setGameID }) {
+function GameCard({ user, game }) {
   let { id, title, release_date, genre } = game;
   const navigate = useNavigate();
 

@@ -6,9 +6,8 @@ import { useParams } from "react-router-dom";
 function MyReviews({ user }) {
   const [myReviews, setMyReviews] = useState([]);
   const [error, setError] = useState(null);
-  //   console.log(user.id);
+
   const { id } = useParams();
-  console.log(id);
 
   useEffect(() => {
     fetch(`/review/user/${id}`).then((response) => {
@@ -19,22 +18,6 @@ function MyReviews({ user }) {
       }
     });
   }, []);
-
-  //   useEffect(() => {
-  //     fetch(`/review/user/${id}`)
-  //       .then((response) => {
-  //         if (!response.ok) {
-  //           throw new Error("Fetch failed");
-  //         }
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-  //         setMyReviews(data);
-  //       })
-  //       .catch((error) => {
-  //         setError(error.toString());
-  //       });
-  //   }, []);
 
   if (error) {
     return <h1 className="header"> {error} </h1>;

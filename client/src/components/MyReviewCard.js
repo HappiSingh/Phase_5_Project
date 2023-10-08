@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function MyReviewCard({ review, user }) {
   const navigate = useNavigate();
-  console.log(review);
+
   if (!user) {
     navigate("/login");
   } else {
