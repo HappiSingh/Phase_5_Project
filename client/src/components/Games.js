@@ -2,7 +2,7 @@ import "./games.css";
 import GameCard from "./GameCard.js";
 import React, { useEffect, useState } from "react";
 
-function Games({ user }) {
+function Games({ user, onNewReview }) {
   const [games, setGames] = useState([]);
   const [error, setError] = useState(null);
 
@@ -21,7 +21,12 @@ function Games({ user }) {
       <h1 className="header"> Games </h1>
       <div className="card-grid">
         {games.map((game) => (
-          <GameCard key={game.id} game={game} user={user} />
+          <GameCard
+            key={game.id}
+            game={game}
+            user={user}
+            onNewReview={onNewReview}
+          />
         ))}
       </div>
     </>

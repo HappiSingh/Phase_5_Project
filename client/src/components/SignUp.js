@@ -9,8 +9,6 @@ function SignUp({ user, setUser }) {
   const navigate = useNavigate();
 
   function handleSubmit(first_name, last_name, age, email, password) {
-    console.log(first_name, last_name, age, email, password);
-
     fetch("/signup", {
       method: "POST",
 

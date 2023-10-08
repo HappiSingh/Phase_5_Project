@@ -2,14 +2,10 @@ import "./gamecard.css";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
-function GameCard({ user, game }) {
+function GameCard({ user, game, onNewReview }) {
   let { id, title, release_date, genre } = game;
-  const navigate = useNavigate();
 
-  // function handleClick() {
-  //   setGameID(id);
-  //   navigate(`/review/game/${id}`);
-  // }
+  const navigate = useNavigate();
 
   if (!user) {
     navigate("/login");
@@ -22,9 +18,13 @@ function GameCard({ user, game }) {
             <p className="card-text">Release Date: {release_date}</p>
             <p className="card-text">Genre: {genre}</p>
             <div className="d-grid gap-2">
-              {/* <Button variant="primary" size="md" onClick={handleClick}>
-                Reviews
-              </Button> */}
+              <Button
+                variant="primary"
+                size="md"
+                onClick={() => onNewReview(id)}
+              >
+                Add a Review
+              </Button>
             </div>
           </div>
         </div>

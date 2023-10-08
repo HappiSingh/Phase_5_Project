@@ -2,8 +2,9 @@ import "./gamecard.css";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
-function MyReviewCard({ review, user }) {
+function MyReviewCard({ review, user, onDelete, onEdit }) {
   const navigate = useNavigate();
+  let { id } = review;
 
   if (!user) {
     navigate("/login");
@@ -16,9 +17,12 @@ function MyReviewCard({ review, user }) {
             <p className="card-text">Rating: {review.rating} </p>
             <p className="card-text">{review.comment}</p>
             <div className="d-grid gap-2">
-              {/* <Button variant="primary" size="md" onClick={handleClick}>
-                Reviews
-              </Button> */}
+              <Button variant="outline-warning" onClick={() => onEdit(id)}>
+                Edit
+              </Button>
+              <Button variant="outline-danger" onClick={() => onDelete(id)}>
+                Remove
+              </Button>
             </div>
           </div>
         </div>

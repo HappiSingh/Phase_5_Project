@@ -6,12 +6,14 @@ import Login from "./components/Login.js";
 import SignUp from "./components/SignUp.js";
 import NavBar from "./components/NavBar.js";
 import Games from "./components/Games.js";
+import AddReview from "./components/AddReview";
 import MyReviews from "./components/MyReviews";
 import { useNavigate } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+  const [selectedGameID, setSelectedGameID] = useState(null);
 
   const navigate = useNavigate();
 
@@ -36,17 +38,31 @@ function App() {
     });
   }
 
+  function handleNewReview(g_id) {
+    setSelectedGameID(g_id);
+    navigate("/review/new");
+  }
+
+  function handleDelete(r_id) {
+    fetch(`/review/${r_id}`, {
+      method: "DELETE",
+    }).then((response) => {
+      if (!response.ok) {
+        response.json().then((data) => setError(data["errors"]));
+      } else {
+        console.log("Success");
+        window.location.reload();
+      }
+    });
+  }
+
   return (
     <>
       <div>
         <main>
           <NavBar user={user} onLogout={handleLogoutClick} />
           <Routes>
-            <Route
-              path="/"
-              element={<Home user={user} setUser={setUser} />}
-              exact
-            />
+            <Route path="/" element={<Home />} exact />
             <Route
               path="/login"
               element={<Login user={user} setUser={setUser} />}
@@ -57,11 +73,22 @@ function App() {
               element={<SignUp user={user} setUser={setUser} />}
               exact
             />
-            <Route path="/games" element={<Games user={user} />} exact />
+
+            <Route
+              path="/games"
+              element={<Games user={user} onNewReview={handleNewReview} />}
+              exact
+            />
 
             <Route
               path="/review/user/:id"
-              element={<MyReviews user={user} />}
+              element={<MyReviews user={user} onDelete={handleDelete} />}
+              exact
+            />
+
+            <Route
+              path="/review/new"
+              element={<AddReview user={user} game_id={selectedGameID} />}
               exact
             />
           </Routes>
