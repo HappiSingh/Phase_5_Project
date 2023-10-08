@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import "./login.css";
+import "./CSS/login.css";
 import { useNavigate } from "react-router-dom";
 
 function Login({ user, setUser }) {

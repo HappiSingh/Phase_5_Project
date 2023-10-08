@@ -1,4 +1,4 @@
-import "./gamecard.css";
+import "./CSS/gamecard.css";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 

@@ -1,4 +1,4 @@
-import "./home.css";
+import "./CSS/home.css";
 import MyReviewCard from "./MyReviewCard.js";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";

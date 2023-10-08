@@ -1,4 +1,4 @@
-import "./games.css";
+import "./CSS/games.css";
 import GameCard from "./GameCard.js";
 import React, { useEffect, useState } from "react";
 

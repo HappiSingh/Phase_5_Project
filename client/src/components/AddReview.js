@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import "./signup.css";
+import "./CSS/signup.css";
 import { useNavigate } from "react-router-dom";
 
 function AddReview({ user, game_id }) {

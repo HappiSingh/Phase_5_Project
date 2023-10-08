@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
-import "./navbar.css";
+import "./CSS/navbar.css";
 
 function NavBar({ user, onLogout }) {
   if (!user) {
@@ -30,7 +30,6 @@ function NavBar({ user, onLogout }) {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/games">Games</Nav.Link>
               <Nav.Link href={`/review/user/${user.id}`}>My Reviews</Nav.Link>
-              {/* <Nav.Link href="/review/new">Add Review</Nav.Link> */}
               <Button
                 variant="outline-danger"
                 className="button"

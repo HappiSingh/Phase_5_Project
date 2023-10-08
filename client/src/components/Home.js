@@ -1,9 +1,17 @@
-import "./home.css";
+import "./CSS/home.css";
 
 function Home() {
   return (
     <>
-      <h1 className="header"> Home </h1>
+      <h1 className="header">
+        {" "}
+        <br />
+        <br />
+        <br />
+        Welcome to Our <br />
+        <br /> Games Review <br />
+        <br /> Website
+      </h1>
     </>
   );
 }
