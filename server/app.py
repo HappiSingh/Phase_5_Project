@@ -9,10 +9,6 @@ from models import User, Game, Publisher_Game, Publisher, Review
 
 # All routes here!
 
-@app.route("/", methods=["GET"])
-def index():
-    return ('<h1>Project Server</h1>'
-           "<h1>Hello from root!</h1>")
 
 #################################################################################
 # RESTful route syntax
@@ -56,7 +52,6 @@ api.add_resource(ReviewByGameID, '/review/game/<int:id>')
 
 ########################################################################################
 
-
 # RESTful route syntax
 class ReviewByUserID(Resource):
 	def get(self, id):
@@ -66,7 +61,7 @@ class ReviewByUserID(Resource):
                 results = [result.to_dict() for result in reviews]
                 return results, 200
             else:
-                return {"errors" : ["No reviews by you"]}, 404
+                return {"errors" : ["No reviews yet: Select the Games tab to get started"]}, 404
 
 api.add_resource(ReviewByUserID, '/review/user/<int:id>')
 ####################################################
@@ -100,30 +95,7 @@ api.add_resource(AddReview, '/review/new')
 
 ####################################################
 class ReviewByID(Resource):
-    def get(self, id):
-            review = Review.query.filter(Review.id == id).first()
-            if review:
-                return review.to_dict(), 200
-            else:
-                return {"errors" : ["No review found"]}, 404
 
-
-    # def patch(self, id):
-    #         review = Review.query.filter(Review.id == id).first()
-
-    #         for attr in request.json:
-    #               setattr (review, attr, request.json[attr])
-
-    #         review.rating = int(request.json["rating"])
-    #         review.comment = str(request.json["comment"])
-
-    #         try:
-    #             db.session.add(review)
-    #             db.session.commit()
-
-    #             return review.to_dict(), 200
-    #         except:
-    #             return {}, 422
 
     def delete(self, id):
             review = Review.query.filter(Review.id == id).first()
