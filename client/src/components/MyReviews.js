@@ -19,8 +19,6 @@ function MyReviews({ user, onDelete }) {
     });
   }, []);
 
-  function handleEdit() {}
-
   if (error) {
     return <h1 className="header"> {error} </h1>;
   } else {
@@ -34,7 +32,6 @@ function MyReviews({ user, onDelete }) {
               review={review}
               user={user}
               onDelete={onDelete}
-              onEdit={handleEdit}
             />
           ))}
         </div>

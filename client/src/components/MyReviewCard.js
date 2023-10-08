@@ -2,7 +2,7 @@ import "./gamecard.css";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
-function MyReviewCard({ review, user, onDelete, onEdit }) {
+function MyReviewCard({ review, user, onDelete }) {
   const navigate = useNavigate();
   let { id } = review;
 
@@ -17,7 +17,7 @@ function MyReviewCard({ review, user, onDelete, onEdit }) {
             <p className="card-text">Rating: {review.rating} </p>
             <p className="card-text">{review.comment}</p>
             <div className="d-grid gap-2">
-              <Button variant="outline-warning" onClick={() => onEdit(id)}>
+              <Button variant="outline-warning" href={`/review/update/${id}`}>
                 Edit
               </Button>
               <Button variant="outline-danger" onClick={() => onDelete(id)}>

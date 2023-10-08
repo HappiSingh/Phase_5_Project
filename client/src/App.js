@@ -9,6 +9,7 @@ import Games from "./components/Games.js";
 import AddReview from "./components/AddReview";
 import MyReviews from "./components/MyReviews";
 import { useNavigate } from "react-router-dom";
+import UpdateReview from "./components/UpdateReview";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -89,6 +90,11 @@ function App() {
             <Route
               path="/review/new"
               element={<AddReview user={user} game_id={selectedGameID} />}
+              exact
+            />
+            <Route
+              path="/review/update/:id"
+              element={<UpdateReview user={user} />}
               exact
             />
           </Routes>
