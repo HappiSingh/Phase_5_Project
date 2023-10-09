@@ -41,11 +41,12 @@ function UpdateReview({ user }) {
   return (
     <>
       <h1 className="header"> Update </h1>
-      <div className="d-flex w-100 vh-100 justify-content-center align-items-center">
-        <div className="w-50 border bg-secondary text-white p-5">
+      <br/>
+      <div className="d-flex w-100 vh-auto justify-content-center align-items-center">
+        <div className="w-50 border bg-dark text-white p-5">
           <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="rating">Rating:</label>
+            <div className="mb-3">
+              <label htmlFor="rating" className="pb-2">Rating:</label>
               <input
                 type="text"
                 name="rating"
@@ -58,8 +59,9 @@ function UpdateReview({ user }) {
               />
             </div>
             <div>
-              <label htmlFor="comment">Review:</label>
-              <input
+              <label htmlFor="comment" className="pb-2">Review:</label>
+              <textarea
+                rows="3"
                 type="text"
                 name="comment"
                 className="form-control"
@@ -68,9 +70,11 @@ function UpdateReview({ user }) {
                 onChange={(e) =>
                   setValues({ ...values, comment: e.target.value })
                 }
-              />
+              ></textarea>
               <br />
+              <div className="d-flex flex-row-reverse">
               <button className="btn btn-info">Update</button>
+              </div>
             </div>
           </form>
         </div>

@@ -14,11 +14,12 @@ function GameCard({ user, game, onNewReview }) {
       <>
         <div className="card">
           <div className="card-body">
-            <h3 className="card-title">{title}</h3>
-            <p className="card-text">Release Date: {release_date}</p>
+            <h3 className="card-title text-center h-25">{title}</h3>
+            <p className="card-text mt-4">Released: {release_date}</p>
             <p className="card-text">Genre: {genre}</p>
-            <div className="d-grid gap-2">
-              <Button
+          </div>
+            <div className="card-footer d-grid gap-2">
+              <Button 
                 variant="primary"
                 size="md"
                 onClick={() => onNewReview(id)}
@@ -26,7 +27,6 @@ function GameCard({ user, game, onNewReview }) {
                 Add a Review
               </Button>
             </div>
-          </div>
         </div>
       </>
     );

@@ -9,6 +9,7 @@ import Games from "./components/Games.js";
 import AddReview from "./components/AddReview";
 import MyReviews from "./components/MyReviews";
 import Publishers from "./components/Publishers";
+import AllReviews from "./components/AllReviews";
 import { useNavigate } from "react-router-dom";
 import UpdateReview from "./components/UpdateReview";
 
@@ -79,6 +80,12 @@ function App() {
             <Route
               path="/games"
               element={<Games user={user} onNewReview={handleNewReview} />}
+              exact
+            />
+
+            <Route
+              path="/reviews"
+              element={<AllReviews user={user} />}
               exact
             />
 

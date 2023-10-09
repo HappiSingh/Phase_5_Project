@@ -13,10 +13,11 @@ function MyReviewCard({ review, user, onDelete }) {
       <>
         <div className="card">
           <div className="card-body">
-            <h3 className="card-title">{review.game.title}</h3>
-            <p className="card-text">Rating: {review.rating} </p>
+            <h3 className="card-title text-center h-15 pb-2">{review.game.title}</h3>
+            <p className="card-text text-center">{review.rating}/10 </p>
             <p className="card-text">{review.comment}</p>
-            <div className="d-grid gap-2">
+          </div>
+           <div className="d-grid gap-2 pb-2 px-4">
               <Button variant="outline-warning" href={`/review/update/${id}`}>
                 Edit
               </Button>
@@ -25,7 +26,6 @@ function MyReviewCard({ review, user, onDelete }) {
               </Button>
             </div>
           </div>
-        </div>
       </>
     );
   }
