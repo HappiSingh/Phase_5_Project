@@ -147,84 +147,74 @@ with app.app_context():
 
     review_1 = Review(
         rating = 8,
-        comment = "Grand Theft Auto V is a triumph of game design, offering a \
-        living, breathing Los Santos filled with an incredible variety of activities.",
+        comment = """Grand Theft Auto V is a triumph of game design, offering a living, breathing Los Santos filled with an incredible variety of activities.""",
         user_id = 1,
         game_id = 4
     )
 
     review_2 = Review(
         rating = 7,
-        comment = "Minecraft is limitless creativity and endless fun, \
-            allowing players to truly make the world theirs.",
+        comment = """Minecraft is limitless creativity and endless fun, allowing players to truly make the world theirs.""",
         user_id = 1,
         game_id = 5
     )
 
     review_3 = Review(
         rating = 9,
-        comment = "Breath of the Wild is a masterpiece of adventure gaming, \
-            offering a sprawling open world filled with secrets and surprises. ",
+        comment = """Breath of the Wild is a masterpiece of adventure gaming, offering a sprawling open world filled with secrets and surprises.""",
         user_id = 1,
         game_id = 8
     )
 
     review_4 = Review(
         rating = 10,
-        comment = "A true game design masterpiece, Breath of the Wild \
-            grants players the freedom to tackle challenges in their own way. ",
+        comment = """A true game design masterpiece, Breath of the Wild grants players the freedom to tackle challenges in their own way.""",
         user_id = 2,
         game_id = 8
     )
 
     review_5 = Review(
         rating = 9,
-        comment = "The Witcher 3 is a triumph of storytelling and world-building, \
-            hooking players with a rich, branching narrative and complex characters.",
+        comment = """The Witcher 3 is a triumph of storytelling and world-building, hooking players with a rich, branching narrative and complex characters.""",
         user_id = 2,
         game_id = 3
     )
 
     review_6 = Review(
         rating = 6,
-        comment = "A gaming phenomenon that has set the standard for competitive play.",
+        comment = """A gaming phenomenon that has set the standard for competitive play.""",
         user_id = 2,
         game_id = 7
     )
 
     review_7 = Review(
         rating = 9,
-        comment = "The destructible environments and tactical gameplay offer \
-            a level of immersion that few games can match",
+        comment = """The destructible environments and tactical gameplay offer a level of immersion that few games can match.""",
         user_id = 3,
         game_id = 2
     )
 
     review_8 = Review(
         rating = 10,
-        comment = "The richly detailed world of Renaissance Italy, combined with Ezio Auditore's compelling \
-            journey for vengeance, creates an experience that's both immersive and emotionally resonant.",
+        comment = """The richly detailed world of Renaissance Italy, combined with Ezio Auditore's compelling journey for vengeance, creates an experience that's both immersive and emotionally resonant.""",
         user_id = 3,
         game_id = 1
     )
     review_9 = Review(
         rating = 7,
-        comment = "The constant updates and events ensure there's always something new and exciting happening in \
-            the ever-evolving world of Fortnite.",
+        comment = """The constant updates and events ensure there's always something new and exciting happening in the ever-evolving world of Fortnite.""",
         user_id = 3,
         game_id = 6
     )
     review_10 = Review(
         rating = 9,
-        comment = "The three main characters bring unique flavors to the story, creating a narrative tapestry that's \
-            thrilling and emotionally resonant.",
+        comment = """The three main characters bring unique flavors to the story, creating a narrative tapestry that's thrilling and emotionally resonant.""",
         user_id = 3,
         game_id = 4
     )
     review_11 = Review(
         rating = 8,
-        comment = "The landscapes are beautifully rendered, and the attention to detail in every nook and cranny of \
-            the world is remarkable.",
+        comment = """The landscapes are beautifully rendered, and the attention to detail in every nook and cranny of the world is remarkable.""",
         user_id = 3,
         game_id = 3
     )
