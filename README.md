@@ -1,5 +1,5 @@
 # Welcome to my Game_Reviews Website
-### Video Games &amp; Reviews with React frontend and Flask backend
+#### Video Games &amp; Reviews with React frontend and Flask backend
 
 ## Description
 Welcome to our Game Reviews platform! Here, you can explore a wide range of video games and check out reviews contributed by fellow users. Feel free to join in by sharing your own thoughts on the games you've played. Just sign up or log in if you're already a member. Had a change of heart about a review? No worries, you can easily edit or even delete it. And if you're curious about the minds behind your favorite games, we've got info on the publishers too! Happy gaming!
@@ -11,7 +11,7 @@ Welcome to our Game Reviews platform! Here, you can explore a wide range of vide
 + Over 7 client-side routes using React Router v6
 + Full CRUD actions
 + Login/Signup integration with password hashing and authentication
-+ Input and user validations on both frontend and backend
++ Input/User validations and error handling on both frontend and backend
 + Use of external libraries (Bootstrap, Formik &amp; Yup, Bcrypt and more)
 
 
@@ -57,7 +57,8 @@ npm start
 ```
 
 ## Usage
-You begin on the main menu. Here, you are greeted with a welcome message and some options to get started. Use the up-and-down arrows on your keyboard to navigate the options menu. Each option you click will take you to a sub-menu where you select the garden you wish to perform the CRUD actions on. View all vegetables will show a table with all the data fetched from the selected garden. Add a vegetable will take your input, validate it, and create a new entry in the database. Remove a vegetable will delete an entry from the selected garden's database given your input. The Update option will let you update the quantity of your selected vegetable from your garden. Order by will sort the database in ascending order based on quantity for easy viewing. Finally, Exit will close the app. In all other sub-menus, a convenient Home option is provided to return to the main menu. 
+You begin on the home page where you're greeted with a welcome message. On the navbar, you have two options, login or sign up. Once you signup or login with the correct user info, you'll see the navbar change. Now you have a tab for Games where you can view all the video games. You also have All Reviews where you can view all the game reviews every user has written. Next, you have My Reviews where you can see all the reviews you've written. Then, you see Publishers where you can view the all the publishers for the video games. In the Games tab, you can click the Add a Review button and write a new review on the game selected. Just enter your given rating out of 10 and your honest opinion. In the My Reviews tab, you are able to view, edit, or remove the reviews you've written. Editing will let you change the rating you original gave it and/or the review itself. Finally on the far right of the navbar, you have an logout option. Happy Writing!
+
 
 ## License
 MIT License
