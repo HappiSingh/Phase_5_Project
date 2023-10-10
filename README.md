@@ -17,41 +17,41 @@ Welcome to our Game Reviews platform! Here, you can explore a wide range of vide
 
 ## Backend Installation
 
-### Enter the server folder
-```python
-cd server
-```
-
-### Install and configure our environment
++ ### Install and configure our environment
 ```python
 pipenv install
 ```
 
-### Enter the Python shell
++ ### Enter the Python shell
 ```python
 pipenv shell
 ``` 
 
-### Run the backend
-#### Make sure you're still in the server folder
++ ### Enter the *server* folder
+```python
+cd server
+```
+
++ ### Run the backend
 ```python
 python app.py
 ```
 
 ## Frontend Installation
 
-#### Open a new terminal
-### Enter the client folder
++ #### Open a new terminal
+
++ ### Enter the *client* folder
 ```react
 cd client
 ```
 
-### Install and configure our environment
++ ### Install and configure our environment
 ```react
 npm install
 ```
 
-### Run the frontend
++ ### Run the frontend
 ```react
 npm start
 ```
