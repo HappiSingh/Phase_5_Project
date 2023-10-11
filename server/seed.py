@@ -345,7 +345,7 @@ with app.app_context():
         )
     
     pub_9 = Publisher(
-        name="Warner Bros. Interactive Entertainment",
+        name="WB Interactive Entertainment",
         country="USA",
         year_founded = "1993"
         )

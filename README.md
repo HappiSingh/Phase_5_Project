@@ -59,6 +59,11 @@ npm start
 ## Usage
 You begin on the home page where you're greeted with a welcome message. On the navbar, you have two options, login or sign up. Once you signup or login with the correct user info, you'll see the navbar change. Now you have a tab for Games where you can view all the video games. You also have All Reviews where you can view all the game reviews every user has written. Next, you have My Reviews where you can see all the reviews you've written. Then, you see Publishers where you can view the all the publishers for the video games. In the Games tab, you can click the Add a Review button and write a new review on the game selected. Just enter your given rating out of 10 and your honest opinion. In the My Reviews tab, you are able to view, edit, or remove the reviews you've written. Editing will let you change the rating you original gave it and/or the review itself. Finally on the far right of the navbar, you have an logout option. Happy Writing!
 
+# Testing
+I've created a sample user for testing purposes. Try logging in a Tom Smith.
++ Email: tom@gmail.com
++ Password: 333333
+
 
 ## License
 MIT License
