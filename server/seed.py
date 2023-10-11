@@ -135,12 +135,82 @@ with app.app_context():
         ),
         genre = "Action-Adventure"
         )
-    games = []
+    
+    game_9 = Game(
+        title = "Batman: Arkham Knight",
+        release_date = date(
+            year=2015,
+            month=6,
+            day=23
+        ),
+        genre = "Action-Adventure"
+        )
+    
+    game_10 = Game(
+        title = "God of War (2018)",
+        release_date = date(
+            year=2018,
+            month=4,
+            day=20
+        ),
+        genre = "Action-Adventure"
+        )
    
+    game_11 = Game(
+            title = "Halo 3",
+            release_date = date(
+                year=2007,
+                month=9,
+                day=25
+            ),
+            genre = "First-Person Shooter"
+            )
 
+    
+    game_12 = Game(
+            title = "Dark Souls III",
+            release_date = date(
+                year=2016,
+                month=3,
+                day=24
+            ),
+            genre = "Action RPG"
+            )
+    
+    game_14 = Game(
+            title = "World of Warcraft",
+            release_date = date(
+                year=2004,
+                month=11,
+                day=23
+            ),
+            genre = "MMO-RPG"
+            )
+    
+    game_13 = Game(
+            title = "Final Fantasy VII Remake",
+            release_date = date(
+                year=2020,
+                month=4,
+                day=10
+            ),
+            genre = "Action RPG"
+            )
+    
+    game_15 = Game(
+            title = "The Elder Scrolls V: Skyrim",
+            release_date = date(
+                year=2011,
+                month=11,
+                day=11
+            ),
+            genre = "Action RPG"
+            )
 
     db.session.add_all([game_1, game_2, game_3, game_4, 
-                        game_5, game_6, game_7, game_8])
+                        game_5, game_6, game_7, game_8,
+                        game_9, game_10, game_11, game_12,
+                        game_13, game_14, game_15,])
     db.session.commit()
 
     print("Games completed\n")
@@ -274,10 +344,52 @@ with app.app_context():
         year_founded = "1889"
         )
     
+    pub_9 = Publisher(
+        name="Warner Bros. Interactive Entertainment",
+        country="USA",
+        year_founded = "1993"
+        )
+    
+    pub_10 = Publisher(
+        name="Sony Interactive Entertainment",
+        country="Japan",
+        year_founded = "1993"
+        )
+    
+    pub_11 = Publisher(
+        name="Microsoft Game Studios",
+        country="USA",
+        year_founded = "2000"
+        )
 
+    pub_12 = Publisher(
+        name="FromSoftware",
+        country="Japan",
+        year_founded = "1986"
+        )
+    
+    pub_13 = Publisher(
+        name="Blizzard Entertainment",
+        country="USA",
+        year_founded = "1991"
+        )
+    
+    pub_14 = Publisher(
+        name="Square Enix",
+        country="Japan",
+        year_founded = "1986"
+        )
+    
+    pub_15 = Publisher(
+        name="Bethesda Softworks",
+        country="USA",
+        year_founded = "1986"
+        )
 
     db.session.add_all([pub_1, pub_2, pub_3, pub_4, 
-                        pub_5, pub_6, pub_7, pub_8])
+                        pub_5, pub_6, pub_7, pub_8,
+                        pub_9, pub_10 ,pub_11 ,pub_12,
+                        pub_13, pub_14, pub_15])
     db.session.commit()
 
 
@@ -331,11 +443,54 @@ with app.app_context():
         publisher_id=8
         )
     
+    pub_game_9 = Publisher_Game(
+        count=1,
+        game_id=9,
+        publisher_id=9
+        )
+    
+    pub_game_10 = Publisher_Game(
+        count=1,
+        game_id=10,
+        publisher_id=10
+        )
+    
+    pub_game_11 = Publisher_Game(
+        count=1,
+        game_id=11,
+        publisher_id=11
+        )
+    
+    pub_game_12 = Publisher_Game(
+        count=1,
+        game_id=12,
+        publisher_id=12
+        )
+    
+    pub_game_13 = Publisher_Game(
+        count=1,
+        game_id=13,
+        publisher_id=13
+        )
+    
+    pub_game_14 = Publisher_Game(
+        count=1,
+        game_id=14,
+        publisher_id=14
+        )
+    
+    pub_game_15 = Publisher_Game(
+        count=1,
+        game_id=15,
+        publisher_id=15
+        )
     
 
 
     db.session.add_all([pub_game_1, pub_game_2, pub_game_3, pub_game_4, 
-                        pub_game_5, pub_game_6, pub_game_7, pub_game_8])
+                        pub_game_5, pub_game_6, pub_game_7, pub_game_8,
+                        pub_game_9, pub_game_10, pub_game_11, pub_game_12,
+                        pub_game_13, pub_game_14, pub_game_15])
     db.session.commit()
 
     print("Publisher_Games completed\n")
