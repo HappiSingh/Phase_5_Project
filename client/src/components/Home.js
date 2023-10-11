@@ -8,8 +8,8 @@ function Home() {
         <br />
         <br />
         <br />
-        Welcome to Our <br />
-        <br /> Games Review <br />
+        Welcome to My <br />
+        <br /> Game Reviews <br />
         <br /> Website
       </h1>
     </>

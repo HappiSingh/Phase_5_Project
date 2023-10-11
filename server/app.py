@@ -67,7 +67,7 @@ class ReviewByUserID(Resource):
                 results = [result.to_dict() for result in reviews]
                 return results, 200
             else:
-                return {"errors" : ["No reviews yet: Select the Games tab to get started"]}, 404
+                return {"errors" : ["Empty: Write Your First Review"]}, 404
 
 api.add_resource(ReviewByUserID, '/review/user/<int:id>')
 ####################################################

@@ -25,7 +25,7 @@ function NavBar({ user, onLogout }) {
       <>
         <Navbar bg="dark" data-bs-theme="dark">
           <Container>
-            <Navbar.Brand>Games_Review</Navbar.Brand>
+            <Navbar.Brand>Game_Reviews</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/games">Games</Nav.Link>
