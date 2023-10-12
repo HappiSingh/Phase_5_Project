@@ -73,7 +73,15 @@ function UpdateReview({ user }) {
           </div>
           <div className="form-group">
             <label htmlFor="comment">Enter Review</label>
-            <Field type="text" name="comment" placeholder={values.comment} />
+            <Field
+              as="textarea"
+              className="textbox"
+              cols="42"
+              rows="5"
+              type="text"
+              name="comment"
+              placeholder={values.comment}
+            />
             <ErrorMessage
               name="comment"
               component="div"
@@ -95,52 +103,3 @@ function UpdateReview({ user }) {
 }
 
 export default UpdateReview;
-
-//   return (
-//     <>
-//       <h1 className="header"> Update </h1>
-//       <br />
-//       <div className="d-flex w-100 vh-auto justify-content-center align-items-center">
-//         <div className="w-50 border bg-dark text-white p-5">
-//           <form onSubmit={handleSubmit}>
-//             <div className="mb-3">
-//               <label htmlFor="rating" className="pb-2">
-//                 Rating:
-//               </label>
-//               <input
-//                 type="text"
-//                 name="rating"
-//                 className="form-control"
-//                 placeholder="Enter Rating"
-//                 value={values.rating}
-//                 onChange={(e) =>
-//                   setValues({ ...values, rating: e.target.value })
-//                 }
-//               />
-//             </div>
-//             <div>
-//               <label htmlFor="comment" className="pb-2">
-//                 Review:
-//               </label>
-//               <textarea
-//                 rows="3"
-//                 type="text"
-//                 name="comment"
-//                 className="form-control"
-//                 placeholder="Enter Review"
-//                 value={values.comment}
-//                 onChange={(e) =>
-//                   setValues({ ...values, comment: e.target.value })
-//                 }
-//               ></textarea>
-//               <br />
-//               <div className="d-flex flex-row-reverse">
-//                 <button className="btn btn-info">Update</button>
-//               </div>
-//             </div>
-//           </form>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }

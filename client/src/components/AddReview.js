@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./CSS/signup.css";
+import "./CSS/home.css";
 import { useNavigate } from "react-router-dom";
 
 function AddReview({ user, game_id }) {
@@ -61,7 +62,14 @@ function AddReview({ user, game_id }) {
           </div>
           <div className="form-group">
             <label htmlFor="comment">Add your review</label>
-            <Field type="text" name="comment" />
+            <Field
+              as="textarea"
+              className="textbox"
+              cols="42"
+              rows="5"
+              type="text"
+              name="comment"
+            />
             <ErrorMessage
               name="comment"
               component="div"

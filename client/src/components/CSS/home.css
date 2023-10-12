@@ -2,3 +2,9 @@
   text-align: center;
   color: #f9f9f9;
 }
+
+.textbox {
+  border: 1px solid #c5c2c2;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
