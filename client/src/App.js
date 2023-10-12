@@ -25,7 +25,8 @@ function App() {
       if (!response.ok) {
         response.json().then((data) => setError(data["errors"]));
       } else {
-        response.json().then((data) => setUser(data));
+        if (user == null)
+          response.json().then((data) => setUser(data));
       }
     });
   }, []);
@@ -61,58 +62,46 @@ function App() {
 
   return (
     <>
-      <div>
-        <main>
-          <NavBar user={user} onLogout={handleLogoutClick} />
-          <Routes>
-            <Route path="/" element={<Home />} exact />
-            <Route
-              path="/login"
-              element={<Login user={user} setUser={setUser} />}
-              exact
-            />
-            <Route
-              path="/signup"
-              element={<SignUp user={user} setUser={setUser} />}
-              exact
-            />
+      <NavBar user={user} onLogout={handleLogoutClick} />
+      <Routes>
+        <Route path="/" element={<Home />} exact />
+        <Route
+          path="/login"
+          element={<Login user={user} setUser={setUser} />}
+          exact
+        />
+        <Route
+          path="/signup"
+          element={<SignUp user={user} setUser={setUser} />}
+          exact
+        />
 
-            <Route
-              path="/games"
-              element={<Games user={user} onNewReview={handleNewReview} />}
-              exact
-            />
+        <Route
+          path="/games"
+          element={<Games user={user} onNewReview={handleNewReview} />}
+          exact
+        />
 
-            <Route
-              path="/reviews"
-              element={<AllReviews user={user} />}
-              exact
-            />
+        <Route path="/reviews" element={<AllReviews user={user} />} exact />
 
-            <Route
-              path="/review/user/:id"
-              element={<MyReviews user={user} onDelete={handleDelete} />}
-              exact
-            />
+        <Route
+          path="/review/user/:id"
+          element={<MyReviews user={user} onDelete={handleDelete} />}
+          exact
+        />
 
-            <Route
-              path="/review/new"
-              element={<AddReview user={user} game_id={selectedGameID} />}
-              exact
-            />
-            <Route
-              path="/review/update/:id"
-              element={<UpdateReview user={user} />}
-              exact
-            />
-            <Route
-              path="/publishers"
-              element={<Publishers user={user} />}
-              exact
-            />
-          </Routes>
-        </main>
-      </div>
+        <Route
+          path="/review/new"
+          element={<AddReview user={user} game_id={selectedGameID} />}
+          exact
+        />
+        <Route
+          path="/review/update/:id"
+          element={<UpdateReview user={user} />}
+          exact
+        />
+        <Route path="/publishers" element={<Publishers user={user} />} exact />
+      </Routes>
     </>
   );
 }

@@ -41,12 +41,14 @@ function UpdateReview({ user }) {
   return (
     <>
       <h1 className="header"> Update </h1>
-      <br/>
+      <br />
       <div className="d-flex w-100 vh-auto justify-content-center align-items-center">
         <div className="w-50 border bg-dark text-white p-5">
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label htmlFor="rating" className="pb-2">Rating:</label>
+              <label htmlFor="rating" className="pb-2">
+                Rating:
+              </label>
               <input
                 type="text"
                 name="rating"
@@ -59,7 +61,9 @@ function UpdateReview({ user }) {
               />
             </div>
             <div>
-              <label htmlFor="comment" className="pb-2">Review:</label>
+              <label htmlFor="comment" className="pb-2">
+                Review:
+              </label>
               <textarea
                 rows="3"
                 type="text"
@@ -73,7 +77,7 @@ function UpdateReview({ user }) {
               ></textarea>
               <br />
               <div className="d-flex flex-row-reverse">
-              <button className="btn btn-info">Update</button>
+                <button className="btn btn-info">Update</button>
               </div>
             </div>
           </form>

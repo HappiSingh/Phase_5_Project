@@ -21,11 +21,7 @@ function AllReviews({ user }) {
       <h1 className="header"> Reviews </h1>
       <div className="card-grid">
         {allReviews.map((review) => (
-          <AllReviewCard
-            key={review.id}
-            review={review}
-            user={user}
-          />
+          <AllReviewCard key={review.id} review={review} user={user} />
         ))}
       </div>
     </>

@@ -5,3 +5,23 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+.user_name {
+  right: 140px;
+  position: absolute;
+}
+
+.Link {
+  padding-inline: 15px;
+  text-decoration: none;
+  color: #f8f9f8;
+  transition: color 0.3s;
+}
+
+.Link:active {
+  color: #ff5733;
+}
+
+.Link:hover {
+  color: #ff5733 
+}

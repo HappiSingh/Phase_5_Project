@@ -8,9 +8,9 @@ function Home() {
         <br />
         <br />
         <br />
-        Welcome to My <br />
-        <br /> Game Reviews <br />
-        <br /> Website
+        Welcome to my
+        <br /> Game Reviews Website
+        <br />
       </h1>
     </>
   );

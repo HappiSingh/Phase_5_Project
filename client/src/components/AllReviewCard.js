@@ -17,7 +17,8 @@ function AllReviewCard({ user, review }) {
             <p className="card-text text-center">{rating}/10</p>
             <p className="card-text">{comment}</p>
           </div>
-            <div className="card-footer text-right font-italic">{review.user.first_name} {review.user.last_name}
+          <div className="card-footer text-right font-italic">
+            {review.user.first_name} {review.user.last_name}
           </div>
         </div>
       </>

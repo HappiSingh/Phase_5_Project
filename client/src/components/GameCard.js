@@ -18,15 +18,11 @@ function GameCard({ user, game, onNewReview }) {
             <p className="card-text mt-4">Released: {release_date}</p>
             <p className="card-text">Genre: {genre}</p>
           </div>
-            <div className="card-footer d-grid gap-2">
-              <Button 
-                variant="primary"
-                size="md"
-                onClick={() => onNewReview(id)}
-              >
-                Add a Review
-              </Button>
-            </div>
+          <div className="card-footer d-grid gap-2">
+            <Button variant="primary" size="md" onClick={() => onNewReview(id)}>
+              Add a Review
+            </Button>
+          </div>
         </div>
       </>
     );
