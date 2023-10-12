@@ -3,6 +3,4 @@ body {
   padding: 0;
   box-sizing: border-box; 
   font-family: sans-serif; 
-  background-size: center;
-  background-image: url(../public/background.jpg);
 }
