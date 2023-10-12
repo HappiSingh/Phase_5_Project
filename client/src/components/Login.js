@@ -21,7 +21,7 @@ function Login({ user, setUser }) {
         r.json().then((data) => {
           setUser(data);
         });
-        navigate("/");
+        navigate("/games");
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
